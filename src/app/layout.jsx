@@ -2,6 +2,8 @@ import { config } from "@/helpers/config";
 import { Montserrat } from "next/font/google";
 import "@/styles/index.scss";
 import BootstrapProvider from "@/helpers/providers/bootstrap-provider";
+import Footer from "@/components/footer";
+import Header from "@/components/header";
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
@@ -17,7 +19,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={montserrat.variable}>
       <body>
-        <BootstrapProvider> {children}</BootstrapProvider>
+        <BootstrapProvider>
+          <Header></Header>
+          <main>{children}</main>
+          <Footer></Footer>
+        </BootstrapProvider>
       </body>
     </html>
   );
