@@ -3,15 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const Logo = () => {
+const Logo = ({ type = "multi" }) => {
   return (
-    <a className="navbar-brand" as={Link} href="/" title={config.project.name}>
+    <Link className="navbar-brand" href="/" title={config.project.name}>
       <Image
-        src="/images/logo/logo-multi.png"
+        src={`/images/logo/logo-${type}.png`}
         width={208}
         height={48}
         alt={config.project.name}></Image>
-    </a>
+    </Link>
   );
 };
 

@@ -1,3 +1,4 @@
+import Slider from "@/components/home/slider";
 import { config } from "@/helpers/config";
 
 export const metadata = {
@@ -6,8 +7,8 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <div>
-      <div class="alert alert-warning">Hello</div>
-    </div>
+    <>
+      <Slider></Slider>
+    </>
   );
 }
