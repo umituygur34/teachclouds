@@ -4,25 +4,38 @@ import { FaRegPaperPlane } from "react-icons/fa";
 import { TfiEmail, TfiEnvelope, TfiTag, TfiUser } from "react-icons/tfi";
 import "./contact-form.scss";
 import { createMessageAction } from "@/actions/contact-actions";
+import { useRef } from "react";
+import SubmitButton from "../common/form-fields/submit-button";
+import { swalAlert } from "@/helpers/swal";
+import { initialResponse } from "@/helpers/form-validation";
 
 const ContactForm = () => {
-  const initialState = { success: true, message: "", errors: {} };
-  const [state, dispatch] = useFormState(createMessageAction, initialState);
-  console.log(state);
+  const [state, dispatch] = useFormState(createMessageAction, initialResponse);
+  const formRef = useRef(null);
+
+  if (state.message) {
+    if (state.success) {
+      formRef.current.reset();
+      swalAlert(state.message, "success");
+    } else {
+      swalAlert(state.message, "error");
+    }
+  }
+
   return (
-    <form className="contact-form" action={dispatch} noValidate>
+    <form className="contact-form" action={dispatch} noValidate ref={formRef}>
       <h2>Send Me Message</h2>
 
       <div className="row">
         <div className="col-lg-6">
-          <div
-            className={`input-group mb-3 ${
-              state.errors?.name ? "is-invalid" : ""
-            }`}>
+          <div className="input-group mb-3">
             <span className="input-group-text" id="basic-addon1">
               <TfiUser />
             </span>
-            <div className="form-floating">
+            <div
+              className={`form-floating  ${
+                state.errors?.name ? "is-invalid" : ""
+              }`}>
               <input
                 type="text"
                 className="form-control"
@@ -32,18 +45,18 @@ const ContactForm = () => {
               />
               <label htmlFor="name">Your name</label>
             </div>
+            <div className="invalid-feedback">{state.errors?.name}</div>
           </div>
-          <div class="invalid-feedback">{state.errors?.name}</div>
         </div>
         <div className="col-lg-6">
-          <div
-            className={`input-group mb-3 ${
-              state.errors?.email ? "is-invalid" : ""
-            }`}>
+          <div className="input-group mb-3">
             <span className="input-group-text" id="basic-addon1">
               <TfiEmail />
             </span>
-            <div className="form-floating">
+            <div
+              className={`form-floating  ${
+                state.errors?.email ? "is-invalid" : ""
+              }`}>
               <input
                 type="email"
                 className="form-control"
@@ -53,18 +66,18 @@ const ContactForm = () => {
               />
               <label htmlFor="email">Email address</label>
             </div>
+            <div className="invalid-feedback">{state.errors?.email}</div>
           </div>
-          <div class="invalid-feedback">{state.errors?.email}</div>
         </div>
         <div className="col-12">
-          <div
-            className={`input-group mb-3 ${
-              state.errors?.subject ? "is-invalid" : ""
-            }`}>
+          <div className="input-group mb-3">
             <span className="input-group-text" id="basic-addon1">
               <TfiTag />
             </span>
-            <div className="form-floating">
+            <div
+              className={`form-floating  ${
+                state.errors?.subject ? "is-invalid" : ""
+              }`}>
               <input
                 type="text"
                 className="form-control"
@@ -74,18 +87,18 @@ const ContactForm = () => {
               />
               <label htmlFor="subject">Subject</label>
             </div>
+            <div className="invalid-feedback">{state.errors?.subject}</div>
           </div>
-          <div class="invalid-feedback">{state.errors?.subject}</div>
         </div>
         <div className="col-12">
-          <div
-            className={`input-group mb-3 ${
-              state.errors?.message ? "is-invalid" : ""
-            }`}>
+          <div className="input-group mb-3">
             <span className="input-group-text" id="basic-addon1">
               <TfiEnvelope />
             </span>
-            <div className="form-floating">
+            <div
+              className={`form-floating  ${
+                state.errors?.message ? "is-invalid" : ""
+              }`}>
               <textarea
                 className="form-control"
                 placeholder="Leave a message here"
@@ -95,13 +108,11 @@ const ContactForm = () => {
 
               <label htmlFor="message">Leave a message here</label>
             </div>
+            <div className="invalid-feedback">{state.errors?.message}</div>
           </div>
-          <div class="invalid-feedback">{state.errors?.message}</div>
         </div>
       </div>
-      <button type="submit" className="btn btn-primary mt-4">
-        <FaRegPaperPlane /> Send
-      </button>
+      <SubmitButton title="Send" icon={<FaRegPaperPlane />} />
     </form>
   );
 };
