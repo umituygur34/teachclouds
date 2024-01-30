@@ -3,15 +3,15 @@ import Spacer from "@/components/common/spacer";
 import Events from "@/components/events/events";
 import React from "react";
 
-const EventPage = () => {
+const EventsPage = () => {
   return (
     <>
       <PageHeader title="Events" />
-      <Spacer height={50} />
+      <Spacer height="50" />
       <Events />
       <Spacer />
     </>
   );
 };
 
-export default EventPage;
+export default EventsPage;

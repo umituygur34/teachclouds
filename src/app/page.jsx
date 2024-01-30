@@ -10,17 +10,17 @@ export const metadata = {
   title: config.project.slogan,
 };
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
-      <Slider></Slider>
-      <Spacer></Spacer>
+      <Slider />
+      <Spacer />
       <Welcome />
-      <Spacer></Spacer>
-      <FeaturedCourses></FeaturedCourses>
-      <Spacer></Spacer>
+      <Spacer />
+      <FeaturedCourses />
+      <Spacer />
       <UpcomingEvents />
-      <Spacer></Spacer>
+      <Spacer />
       <MobileApp />
     </>
   );

@@ -29,6 +29,10 @@ const UpcomingEvents = () => {
           slidesPerView={1}
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
+          navigation={{
+            nextEl: ".next",
+            prevEl: ".prev",
+          }}
           breakpoints={{
             576: {
               slidesPerView: 2,

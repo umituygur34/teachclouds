@@ -7,12 +7,12 @@ import React from "react";
 const AboutPage = () => {
   return (
     <>
-      <PageHeader title={"About"}></PageHeader>
-      <Spacer></Spacer>
-      <Welcome></Welcome>
-      <Spacer></Spacer>
-      <Instructors></Instructors>
-      <Spacer></Spacer>
+      <PageHeader title="About" />
+      <Spacer />
+      <Welcome />
+      <Spacer />
+      <Instructors />
+      <Spacer />
     </>
   );
 };

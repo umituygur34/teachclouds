@@ -18,18 +18,14 @@ const ContactMenu = (props) => {
       </li>
 
       <li className="nav-item">
-        <a className="nav-link" href={`tel:${config.contact.email}`}>
+        <a className="nav-link" href={`mailto:${config.contact.email}`}>
           <TfiEmail /> {config.contact.email}
         </a>
       </li>
 
       <li className="nav-item">
-        <a
-          className="nav-link"
-          href={`tel:${config.contact.mapURL}`}
-          target="_blank">
-          <TfiMap />
-          {config.contact.address}
+        <a className="nav-link" href={config.contact.mapURL} target="_blank">
+          <TfiMap /> {config.contact.address}
         </a>
       </li>
     </ul>
